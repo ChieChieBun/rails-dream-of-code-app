@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_01_01_191924) do
+ActiveRecord::Schema[8.0].define(version: 2025_01_01_191920) do
   create_table "coding_classes", force: :cascade do |t|
     t.string "title"
     t.text "description"
@@ -42,7 +42,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_01_191924) do
     t.integer "course_id", null: false
     t.integer "lesson_number"
     t.string "title"
-    t.string "url"
     t.date "assignment_due_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -1,0 +1,26 @@
+Q1:
+43 michal@kautzer.test
+47 quentin_dicki@fay.test
+
+coding_class_id= CodingClass.find_by(title:"Intro to Programming")
+trimester_id = Trimester.find_by(year:"2025", term:"Spring")
+course_id = Course.find_by(coding_class_id: coding_class_id, trimester_id: trimester_id)
+enrollments = Enrollment.where(course_id: course_id)
+enrollments.each do |enrollment|
+  student = enrollment.student
+  puts "#{student.id} #{student.email}"
+end
+
+Q2:
+25 josefina@kuhlman.test
+26 newton@kautzer-conroy.test
+
+coding_class_id= CodingClass.find_by(title:"Intro to Programming")
+trimester_id = Trimester.find_by(year:"2025", term:"Spring")
+course_id = Course.find_by(coding_class_id: coding_class_id, trimester_id: trimester_id)
+enrollments = Enrollment.where( course_id: course_id, final_grade:nil)
+enrollments.each do |enrollment|
+ mentor_id = MentorEnrollmentAssignment.find_by(enrollment_id: enrollment.id)
+  mentor = mentor_id.mentor
+  puts "#{mentor.id} #{mentor.email}"
+end

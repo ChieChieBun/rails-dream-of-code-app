@@ -1,0 +1,23 @@
+Q1
+  coding_class = CodingClass.all
+  coding_class.each do |coding_class|
+    Course.create!(coding_class_id: coding_class.id,trimester_id: "8", max_enrollment: "25")
+  end
+Q2:
+  Student.create!(first_name: "Bob", last_name:"Smith", email:"bobsmith@test.com")
+  new_student = Student.last
+  course = Course.find_by(trimester:8, coding_class_id:1)
+  Enrollment.create!(course_id: course.id, student_id: new_student.id)
+  new_enrollment = Enrollment.last
+  MentorEnrollmentAssignment.select("mentor_id").group(:mentor_id).having("count(mentor_id) < 3").count
+  MentorEnrollmentAssignment.create!(mentor_id:31, enrollment_id: new_enrollment.id)
+
+Q3:
+  I want to make a personal online like blog/journal mostly because it reminds me of neocities like blog that ill be trying to make. Users is the "Admin" that makes the journal posts and views. they might have to login to comment or reply to comments? or anyone can comment? Would be cool if there was a report option for non admin people on comments but a delete option on comments for admin?
+Q4:
+  Catagory:id, catagory_name
+  privacy: id, private or public
+  Journal: id, Journal_title, privacy_id
+  tags: id, tag_name
+  journal_tag_relationship: journal_id,tag_id(s)
+  journal_catagory_relationship: journal_id,catagory_id

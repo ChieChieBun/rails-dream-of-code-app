@@ -1,0 +1,13 @@
+Q1:What tables do you need to add? Decide on table names and their associations to each other and any existing tables/models.
+A1:Topics and Lesson_topics
+
+Q2:What columns are necessary for the associations you decided on?
+A2:Topics-Topic name Lesson_topics-lesson id,topic id
+
+Q3:What other columns (if any) need to be included on the tables? What other data needs to be stored?
+
+Q4:Write out each table's name and column names with data types.
+A4:Topics-string :name Lesson_topics- integer: lesson id, topic id
+
+Q5:Determine the generator command you'll need to create the migration file and run the command to generate the empty migration file. Start with just the topics migration. (Hint: your filename should be create_topics)
+A5: bin/rails generate migration create_topics

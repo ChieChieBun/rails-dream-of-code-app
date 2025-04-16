@@ -18,5 +18,6 @@ class Course < ApplicationRecord
       email_list << "#{enrollment.student.email}"
     end
     email_list
+
   end
 end

@@ -113,6 +113,9 @@ RSpec.describe Course, type: :model do
       end
     end
 
+
+
+
     context 'when there are students enrolled in the course' do
       # Create student records with dummy data
       let(:enrolled_student_1) {

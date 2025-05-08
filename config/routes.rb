@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   get "/trimesters", to: "trimesters#index"
   get "/trimesters/:id", to: "trimesters#show"
   get "/dashboard", to: "admin_dashboard#index"
+  get "/courses/:id", to: "courses#show"
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

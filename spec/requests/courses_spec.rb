@@ -44,16 +44,16 @@ RSpec.describe "Courses", type: :request do
 
         it "returns the course name and at least one student name" do
           # Check for successful response
-          get "/courses"
+          get courses_path(:id)
           expect(response).to have_http_status(:ok)
         end
 
         it "Shows Course title" do
-          get "/courses"
+          get courses_path(:id)
           expect(response.body).to include("Javascript")
       end
       it "shows students names" do
-        get "/courses"
+        get courses_path(:id)
           # Check if student names are included in the response
           expect(response.body).to include(Student.first.first_name)
           expect(response.body).to include(Student.last.first_name)

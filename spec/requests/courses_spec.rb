@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "Courses", type: :request do
-  describe 'GET /courses' do
+  describe 'GET courses_path(:id)' do
     before do
       coding_class = CodingClass.create!(
         title: "Javascript"

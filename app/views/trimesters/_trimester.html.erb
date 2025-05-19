@@ -1,0 +1,13 @@
+<p>
+    <strong>Trimester:</strong>
+    <%= trimester.display_name %>
+  </p>
+  <p><strong>Application Deadline:</strong> <%= trimester.application_deadline %></p>
+ <p><strong>Start Date:</strong> <%= trimester.start_date %></p>
+  <p><strong>End Date:</strong> <%= trimester.end_date %></p>
+
+  <ul>
+<% @courses.each do |course| %>
+    <li><a href="/courses/<%= course.id %>"><%= course.coding_class.title %></a></li>
+  <% end %>
+ </ul>

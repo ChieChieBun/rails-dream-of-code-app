@@ -8,21 +8,40 @@ class CoursesController < ApplicationController
 
   # GET /courses/1 or /courses/1.json
   def show
-    
-
+  @students = @course.students
   end
 
   # GET /courses/new
   def new
     @course = Course.new
+    @trimesters = Trimester.all
+    @coding_classes = CodingClass.all
   end
 
   # GET /courses/1/edit
   def edit
+    @coding_classes = CodingClass.all
+    @trimesters = Trimester.all
   end
 
   # POST /courses or /courses.json
   def create
+    @course = Course.new(course_params)
+
+    respond_to do |format|
+      if @course.save
+        # Redirect to the course page
+        format.html { redirect_to @course, notice: "Course was successfully created." }
+        format.json { render :show, status: :created, location: @course }
+      else
+        @trimesters = Trimester.all
+        @coding_classes = CodingClass.all
+        # Re-render the new course form. The view already contains
+        # logic to display the errors in @course.errors
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @course.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # PATCH/PUT /courses/1 or /courses/1.json
@@ -36,6 +55,7 @@ class CoursesController < ApplicationController
         format.json { render json: @course.errors, status: :unprocessable_entity }
       end
     end
+    
   end
 
   # DELETE /courses/1 or /courses/1.json

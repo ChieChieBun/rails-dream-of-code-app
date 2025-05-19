@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "Courses", type: :request do
-  describe 'GET courses_path(:id)' do
+  describe 'GET courses_path(@course)' do
     before do
       coding_class = CodingClass.create!(
         title: "Javascript"
@@ -44,16 +44,16 @@ RSpec.describe "Courses", type: :request do
 
         it "returns the course name and at least one student name" do
           # Check for successful response
-          get courses_path(:id)
+          get courses_path(@course)
           expect(response).to have_http_status(:ok)
         end
 
         it "Shows Course title" do
-          get courses_path(:id)
+          get courses_path(@course)
           expect(response.body).to include("Javascript")
       end
       it "shows students names" do
-        get courses_path(:id)
+        get courses_path(@course)
           # Check if student names are included in the response
           expect(response.body).to include(Student.first.first_name)
           expect(response.body).to include(Student.last.first_name)

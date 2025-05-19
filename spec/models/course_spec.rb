@@ -23,8 +23,10 @@ RSpec.describe Course, type: :model do
     )
   }
   let(:course) {
-    Course.create(coding_class: coding_class,
-                  trimester: trimester)
+    Course.create(
+      coding_class: coding_class,
+      trimester: trimester
+      )
   }
 
   # We define a "describe block" for each method or set of behaviors we're testing

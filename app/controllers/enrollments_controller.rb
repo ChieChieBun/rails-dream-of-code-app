@@ -8,6 +8,7 @@ class EnrollmentsController < ApplicationController
 
   # GET /enrollments/1 or /enrollments/1.json
   def show
+   
   end
 
   # GET /enrollments/new

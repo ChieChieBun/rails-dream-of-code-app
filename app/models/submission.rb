@@ -3,3 +3,4 @@ class Submission < ApplicationRecord
   belongs_to :enrollment
   belongs_to :mentor
 end
+

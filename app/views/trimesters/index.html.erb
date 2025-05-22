@@ -2,7 +2,7 @@
 <ul>
 <% @trimesters.each do |trimester| %>
 
-  <li><%= "#{trimester.term} #{trimester.year}" %></li>
+  <li><a href="/trimesters/<%= trimester.id %>"><%= trimester.display_name %></a></li>
   <% end %>
 
 <ul>

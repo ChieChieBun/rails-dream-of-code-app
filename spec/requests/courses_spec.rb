@@ -13,7 +13,7 @@ RSpec.describe "Courses", type: :request do
         end_date: Date.today + 2.months,
         application_deadline: Date.today - 16.days
       )
-      course1 = Course.create!(
+      @course = Course.create!(
         coding_class: coding_class,
         trimester: current_trimester,
         max_enrollment: 25
@@ -27,13 +27,13 @@ RSpec.describe "Courses", type: :request do
       end
       Enrollment.create!(
         student: Student.first,
-        course: course1,
+        course: @course,
         final_grade: nil,
         created_at: Date.new(2025, 2, 28)
     )
     Enrollment.create!(
         student: Student.last,
-        course: course1,
+        course: @course,
         final_grade: nil,
         created_at: Date.new(2025, 3, 2)
     )
@@ -44,16 +44,16 @@ RSpec.describe "Courses", type: :request do
 
         it "returns the course name and at least one student name" do
           # Check for successful response
-          get courses_path(@course)
+          get course_path(@course)
           expect(response).to have_http_status(:ok)
         end
 
         it "Shows Course title" do
-          get courses_path(@course)
+          get course_path(@course)
           expect(response.body).to include("Javascript")
       end
       it "shows students names" do
-        get courses_path(@course)
+        get course_path(@course)
           # Check if student names are included in the response
           expect(response.body).to include(Student.first.first_name)
           expect(response.body).to include(Student.last.first_name)

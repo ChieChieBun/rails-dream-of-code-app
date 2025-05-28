@@ -1,5 +1,6 @@
 class CoursesController < ApplicationController
   before_action :set_course, only: %i[ show edit update destroy ]
+  before_action :require_admin, only: %i[ create edit update destroy ]
 
   # GET /courses or /courses.json
   def index
@@ -55,7 +56,7 @@ class CoursesController < ApplicationController
         format.json { render json: @course.errors, status: :unprocessable_entity }
       end
     end
-    
+
   end
 
   # DELETE /courses/1 or /courses/1.json

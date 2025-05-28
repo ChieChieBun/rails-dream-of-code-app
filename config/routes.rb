@@ -14,6 +14,9 @@ Rails.application.routes.draw do
   get "/trimesters/:id", to: "trimesters#show"
   get "/dashboard", to: "admin_dashboard#index"
   get "/courses/:id", to: "courses#show"
+  get "login", to: "sessions#new"
+  post "login", to: "sessions#create"
+  delete "logout", to: "sessions#destroy"
 
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

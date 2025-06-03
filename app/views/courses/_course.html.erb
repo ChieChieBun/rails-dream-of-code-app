@@ -8,17 +8,21 @@
     <strong>Trimester:</strong>
     <%= "#{course.trimester.term} #{course.trimester.year}" %>
   </p>
-
+ <% user = User.find_by(id: session[:user_id]) %>
+  <% if user.role != "student" %>
   <strong>Enrolled students</strong>
   <ul>
     <% course.enrollments.each do |enrollment| %>
       <li><%= enrollment.student.full_name %></li>
     <% end %>
   </ul>
+  <% end %>
 
   <p>
     <strong>Max enrollment:</strong>
     <%= course.max_enrollment %>
   </p>
+ 
+
 
 </div>

@@ -8,9 +8,15 @@
   <% @courses.each do |course| %>
     <%= render course %>
     <p>
+     <% user = User.find_by(id: session[:user_id]) %>
+      <% if user.role == "student" %>
+      <%= link_to "Submit Assignment", new_course_submission_path(course) %>
+      <% end %>
       <%= link_to "Show this course", course %>
     </p>
+    <hr>
   <% end %>
 </div>
+
 
 <%= link_to "New course", new_course_path %>

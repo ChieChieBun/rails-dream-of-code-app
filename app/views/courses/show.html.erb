@@ -3,8 +3,8 @@
 <%= render @course %>
 
 <div>
-  <% user = User.find_by(id: session[:user_id]) %>
-<% if user.role == "student" %>
+
+<% if @user&.role == "student" %>
       <p><%= link_to "Submit Assignment", new_course_submission_path(@course) %>
       <% end %></p>
 

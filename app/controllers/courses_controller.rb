@@ -5,11 +5,13 @@ class CoursesController < ApplicationController
   # GET /courses or /courses.json
   def index
     @courses = Course.all
+    @user = User.find_by(id: session[:user_id])
   end
 
   # GET /courses/1 or /courses/1.json
   def show
   @students = @course.students
+  @user = User.find_by(id: session[:user_id])
   end
 
   # GET /courses/new

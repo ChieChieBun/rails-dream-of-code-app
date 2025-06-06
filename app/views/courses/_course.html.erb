@@ -8,8 +8,8 @@
     <strong>Trimester:</strong>
     <%= "#{course.trimester.term} #{course.trimester.year}" %>
   </p>
- <% user = User.find_by(id: session[:user_id]) %>
-  <% if user.role != "student" %>
+
+  <% if @user&.role == "admin" || @user&.role == "mentor"%>
   <strong>Enrolled students</strong>
   <ul>
     <% course.enrollments.each do |enrollment| %>
@@ -22,7 +22,7 @@
     <strong>Max enrollment:</strong>
     <%= course.max_enrollment %>
   </p>
- 
+
 
 
 </div>

@@ -1,14 +1,17 @@
 class CoursesController < ApplicationController
   before_action :set_course, only: %i[ show edit update destroy ]
+  before_action :require_admin, only: %i[ create edit update destroy ]
 
   # GET /courses or /courses.json
   def index
     @courses = Course.all
+    @user = User.find_by(id: session[:user_id])
   end
 
   # GET /courses/1 or /courses/1.json
   def show
   @students = @course.students
+  @user = User.find_by(id: session[:user_id])
   end
 
   # GET /courses/new
@@ -55,7 +58,7 @@ class CoursesController < ApplicationController
         format.json { render json: @course.errors, status: :unprocessable_entity }
       end
     end
-    
+
   end
 
   # DELETE /courses/1 or /courses/1.json

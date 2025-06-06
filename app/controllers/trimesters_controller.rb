@@ -1,5 +1,6 @@
 class TrimestersController < ApplicationController
 before_action :set_trimester, only: %i[ show edit update destroy ]
+before_action :require_admin, only: %i[ create edit update destroy ]
 
   def index
     @trimesters = Trimester.all

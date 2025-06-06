@@ -1,6 +1,6 @@
 class MentorEnrollmentAssignmentsController < ApplicationController
   before_action :set_mentor_enrollment_assignment, only: %i[ show edit update destroy ]
-
+  before_action :require_admin
   # GET /mentor_enrollment_assignments or /mentor_enrollment_assignments.json
   def index
     @mentor_enrollment_assignments = MentorEnrollmentAssignment.all

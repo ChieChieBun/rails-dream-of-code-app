@@ -9,6 +9,12 @@ Rails.application.routes.draw do
   end
   resources :coding_classes
   resources :trimesters
+  namespace :api do
+    namespace :v1 do
+      get "/courses", to: "courses#index"
+      get "/courses/:course_id/enrollments", to: "enrollments#index"
+    end
+  end
 
   get "/trimesters", to: "trimesters#index"
   get "/trimesters/:id", to: "trimesters#show"
@@ -17,6 +23,7 @@ Rails.application.routes.draw do
   get "login", to: "sessions#new"
   post "login", to: "sessions#create"
   delete "logout", to: "sessions#destroy"
+
 
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
